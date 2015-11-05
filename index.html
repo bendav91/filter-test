@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        	.cont{
+        		filter: url('#goo');
+        		-webkit-filter: url("#goo");
+        	}
+
+        	.circle{
+        		width: 100px;
+        		height: 100px;
+        		background: #c00;
+        		border-radius: 50%;
+        		position: absolute;
+        		left: 10px;
+        		cursor: pointer;
+        	}
+
+        	svg{
+        		display: none;
+        	}
+
+        </style>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+		<div class="cont">
+        	<div id="1" class="circle"></div>
+        	<div id="2" class="circle"></div>
+        </div>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+		  <defs>
+		    <filter id="goo">
+		      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+		      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+		      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+		    </filter>
+		  </defs>
+		</svg>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+        <script>
+        	var goBack = false;
+
+    		$('.circle').click(function(){
+
+    			if (goBack === false) {
+
+    				$('#2').animate({left:'+=120'}, 1000);
+    				goBack = true;
+
+    			} else {
+
+    				$('#2').animate({left:'-=120'}, 1000);
+    				goBack = false;
+
+    			}
+
+    		});
+
+        </script>
+    </body>
+</html>
